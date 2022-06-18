@@ -1,0 +1,5 @@
+-APP - Renders:
+        -BlackJack // Renders Player Container - Holds BlackJack table Img  <-- drawCard Hook
+                -Dealer <-- dealerHand hook
+                -PlayerA <-- aHand Hook
+                -PlayerB <-- bHand Hook
