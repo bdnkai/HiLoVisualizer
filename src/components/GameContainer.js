@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { deckContext } from './context/deckContext';
-
-;
+import NewSet from '../logic-components/NewSet';
 
 function GameContainer() {
 	const [deck, setDeck] = useState('6zxbphufrmn6');
+    
 
 	const URL = `https://deckofcardsapi.com/api/deck/${deck}/`;
 
@@ -35,15 +35,13 @@ function GameContainer() {
 			});
 	};
 
-	useEffect(() => {
-		verifyDeck();
-	}, [fetchDeck]);
+
 
 	return (
 		<div>
 			<deckContext.Provider value={{ deck, setDeck }}>
-				<Dealer/> //Replace with logic components
-			</deckContext.Provider>
+                <NewSet />
+            </deckContext.Provider>
 		</div>
 	);
 }

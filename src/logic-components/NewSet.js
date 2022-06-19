@@ -1,20 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
+import { deckContext } from '../components/context/deckContext';
 
-function useCardDraw(deckIDName) {
-	const URL = `https://deckofcardsapi.com/api/deck/${deckIDName}/draw/?count=1`;
-	console.log(URL);
+function NewSet() {
+	const [currentCard, setCurrentCard] = useState([]);
+	const { deck, setDeck } = useContext(deckContext);
+	const isMounted = useRef(false);
+	const newSetURL = `https://deckofcardsapi.com/api/deck/${deck}/draw/?count=4`;
 
-	const fetchCard = () => {
-		fetch(URL)
+	const handleClick = (event) => {
+		fetch(newSetURL)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
+				setCurrentCard(res.cards);
 			});
 	};
 
-	useEffect(() => {
-		fetchCard();
-	}, []);
-}
+	useEffect(
+		(event) => {
+			if (isMounted.current) {
+				handleClick();
+			}
+		},
+		[handleClick]
+	);
 
-export default useCardDraw;
+	return (
+		<>
+			<button onClick={handleClick}>New Card</button>
+		</>
+	);
+}
+export default NewSet;
