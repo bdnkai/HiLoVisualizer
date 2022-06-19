@@ -1,11 +1,13 @@
-
+import Dealer from './Dealer'
 
 function BlackJack() {
-    return (
-        <div>
-            
-        </div>
-    );
+	
+
+	return (
+		<div>
+			<Dealer />
+		</div>
+	);
 }
 
 export default BlackJack;

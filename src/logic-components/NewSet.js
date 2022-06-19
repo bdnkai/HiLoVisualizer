@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 
-function useCardDraw(deckID) {
-	const URL =
-		`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=1`;
+function useCardDraw(deckIDName) {
+	const URL = `https://deckofcardsapi.com/api/deck/${deckIDName}/draw/?count=1`;
 	console.log(URL);
 
 	const fetchCard = () => {

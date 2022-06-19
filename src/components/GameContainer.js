@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { deckContext } from './context/deckContext';
 
-function useDeck() {
+;
+
+function GameContainer() {
 	const [deck, setDeck] = useState('6zxbphufrmn6');
 
 	const URL = `https://deckofcardsapi.com/api/deck/${deck}/`;
@@ -35,6 +38,14 @@ function useDeck() {
 	useEffect(() => {
 		verifyDeck();
 	}, [fetchDeck]);
+
+	return (
+		<div>
+			<deckContext.Provider value={{ deck, setDeck }}>
+				<Dealer/> //Replace with logic components
+			</deckContext.Provider>
+		</div>
+	);
 }
 
-export default useDeck;
+export default GameContainer;
