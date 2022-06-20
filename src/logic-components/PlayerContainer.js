@@ -7,7 +7,6 @@ import PlayerA from '../components/PlayerA';
 function PlayerContainer({ currentCard }) {
 	const { deck, setDeck } = useContext(deckContext);
 	const [dealer, setDealer] = useState('');
-	const [playerA, setPlayerA] = useState('');
 	const isMounted = useRef(false);
 
 	const fetchHand = async () => {
@@ -18,38 +17,19 @@ function PlayerContainer({ currentCard }) {
 			.then((res) => {
 				setDealer(res.piles.dealer.cards);
 				return fetch(playerAListURL);
-			})
-			.then((res) => res.json())
-			.then((res) => {
-				setPlayerA(res.piles.playerA.cards);
 			});
 	};
-	console.log(playerA, dealer);
 
-	const cardMap = () => {
-		{
-			setDealer(
-				dealer.map((element, index) => {
-					(key = { index }), (card = { element });
-				})
-			);
-		}
-	};
+	// console.log(playerA, dealer);
 
 	useEffect(() => {
 		fetchHand();
-	}, [currentCard]);
-
-	useEffect(() => {
-		cardMap();
-	}, [dealer, playerA]);
+	}, [currentCard, deck]);
 
 	return (
 		<div>
-			<playerContext.Provider
-				value={{ dealer, setDealer, playerA, setPlayerA }}>
+			<playerContext.Provider value={{ dealer, setDealer }}>
 				<Dealer />
-				<PlayerA />
 			</playerContext.Provider>
 		</div>
 	);
