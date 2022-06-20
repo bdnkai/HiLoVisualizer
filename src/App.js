@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import BlackJack from './components/BlackJack';
-import GameContainer from './components/GameContainer';
 import './App.css';
+import NavContainer from './components/NavContainer';
+import GameContainer from './logic-components/GameContainer'
 
 function App() {
 	return (
 		<div>
-      <GameContainer/>
+			<NavContainer />
+			<GameContainer/>
 		</div>
 	);
 }

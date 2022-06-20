@@ -2,17 +2,39 @@ import { useState, useEffect, useContext, useRef } from 'react';
 import { deckContext } from '../components/context/deckContext';
 
 function NewSet() {
-	const [currentCard, setCurrentCard] = useState([]);
+	const [currentCard, setCurrentCard] = useState();
 	const { deck, setDeck } = useContext(deckContext);
 	const isMounted = useRef(false);
-	const newSetURL = `https://deckofcardsapi.com/api/deck/${deck}/draw/?count=4`;
 
 	const handleClick = (event) => {
-		fetch(newSetURL)
-			.then((res) => res.json())
-			.then((res) => {
-				setCurrentCard(res.cards);
-			});
+		const newSetURL = `https://deckofcardsapi.com/api/deck/${deck}/draw/?count=4`;
+		const fetchSet = () => {
+			fetch(newSetURL)
+				.then((res) => res.json())
+				.then((res) => {
+					setCurrentCard(res.cards);
+				});
+		};
+		fetchSet();
+	};
+	const dealSet = () => {
+		if (currentCard === undefined) {
+			return;
+		} else {
+			const dHand = `${[currentCard[0].code]},${[currentCard[2].code]}`;
+			const pHand = `${[currentCard[1].code]},${[currentCard[3].code]}`;
+			const dealerURL = `https://deckofcardsapi.com/api/deck/${deck}/pile/dealer/add/?cards=${dHand}`;
+			const playerURL = `https://deckofcardsapi.com/api/deck/${deck}/pile/playerA/add/?cards=${pHand}`;
+			console.log(dealerURL);
+			fetch(dealerURL)
+				.then((res) => res.json())
+				.then((dealer) => {
+					console.log(dealer);
+					return fetch(playerURL);
+				})
+				.then((res) => res.json())
+				.then((player) => console.log(player));
+		}
 	};
 
 	useEffect(
@@ -21,13 +43,21 @@ function NewSet() {
 				handleClick();
 			}
 		},
-		[handleClick]
+		[handleClick, dealSet]
 	);
 
+	useEffect(() => {
+		if (isMounted.current) {
+		}
+		dealSet();
+	}, [currentCard]);
+
 	return (
-		<>
-			<button onClick={handleClick}>New Card</button>
-		</>
+		<div className='button' id='Start-Button'>
+			<button type='button' onClick={handleClick}>
+				Start / DealHand
+			</button>
+		</div>
 	);
 }
 export default NewSet;

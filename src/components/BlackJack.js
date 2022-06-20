@@ -1,11 +1,13 @@
-import Dealer from './Dealer'
+import NewSet from '../logic-components/NewSet';
+import PlayerContainer from '../logic-components/PlayerContainer';
 
 function BlackJack() {
 	
 
 	return (
 		<div>
-			<Dealer />
+			<NewSet />
+			<PlayerContainer/>
 		</div>
 	);
 }
