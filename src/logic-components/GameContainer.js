@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { deckContext } from '../components/context/deckContext';
 import BlackJack from '../components/BlackJack';
 
 function GameContainer() {
 	const [deck, setDeck] = useState('');
+	const isMounted = useRef(true);
 
 	const URL = `https://deckofcardsapi.com/api/deck/6zxbphufrmn6/`;
 
@@ -37,7 +38,8 @@ function GameContainer() {
 
 	useEffect(() => {
 		verifyDeck();
-	}, []);
+	}, [deck]);
+
 	return (
 		<div>
 			<deckContext.Provider value={{ deck, setDeck }}>

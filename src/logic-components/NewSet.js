@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import { deckContext } from '../components/context/deckContext';
+import PlayerContainer from './PlayerContainer';
 
 function NewSet() {
 	const [currentCard, setCurrentCard] = useState();
@@ -57,6 +58,7 @@ function NewSet() {
 			<button type='button' onClick={handleClick}>
 				Start / DealHand
 			</button>
+			<PlayerContainer currentCard={currentCard} />
 		</div>
 	);
 }

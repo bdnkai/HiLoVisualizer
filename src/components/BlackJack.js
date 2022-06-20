@@ -7,7 +7,6 @@ function BlackJack() {
 	return (
 		<div>
 			<NewSet />
-			<PlayerContainer/>
 		</div>
 	);
 }
