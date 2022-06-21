@@ -59,7 +59,7 @@ function NewSet() {
 			<button type='button' onClick={handleClick}>
 				Start / DealHand
 			</button>
-			<PlayerContainer />
+			<PlayerContainer setCurrentCard={setCurrentCard} currentCard={currentCard}/>
 		</div>
 	);
 }

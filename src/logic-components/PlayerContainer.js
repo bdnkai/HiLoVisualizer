@@ -1,25 +1,42 @@
 import { useState, useContext, useEffect, useRef } from 'react';
 import { gameContext } from '../components/context/gameContext';
-import { useFetch } from '../components/hooks/useFetch';
-import Dealer from '../components/Dealer';
-import PlayerA from '../components/PlayerA';
-import { useMap } from '../components/hooks/useMap';
+import { usePerson } from '../components/hooks/usePerson';
+import { useDealer } from '../components/hooks/useDealer';
 
 function PlayerContainer() {
 	const { bJ, setBJ } = useContext(gameContext);
-
 	const dealerListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/dealer/list/`;
 	const playerAListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/list/`;
 
-	const dealersHand = useMap(dealerListURL);
-	// console.log(dealersHand.data.map((element,key) => {}));
-	function testDealer() {
-		setBJ({ ...bJ, dealer: dealersHand.data });
+	const passDealer = useDealer(dealerListURL);
+	const passPlayer = usePerson(playerAListURL);
+
+	// console.log(passCard.data.map((element,key) => {}));
+	function dealerPass() {
+		setBJ({ ...bJ, dealer: passDealer.dealerCard });
 	}
+	// function playerPass() {
+	// 	setBJ({ ...bJ, playerA: passPlayer.playerCard });
+	// }
 
 	useEffect(() => {
-		testDealer();
-	}, [dealersHand]);
+		if (passDealer.loading === true) {
+			setTimeout(2000);
+		} else if (passDealer.loading === false) {
+			dealerPass();
+			console.log(passDealer.dealerCard);
+		}
+	}, []);
+
+	// useEffect(() => {
+	// 	if (passPlayer.loading === true) {
+	// 		setTimeout(2000);
+	// 	} else if (passPlayer.loading === false) {
+	// 		playerPass();
+	// 		console.log(passPlayer.data2);
+	// 	}
+	// }, []);
+
 	// const fetchHand=() => {
 	// 	fetch(dealerListURL)
 	// 		.then((res) => res.json())
