@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext, useRef } from 'react';
-import { deckContext } from '../components/context/deckContext';
+import { gameContext } from '../components/context/gameContext';
+import { useFetch } from '../components/hooks/useFetch';
 import PlayerContainer from './PlayerContainer';
 
 function NewSet() {
+	const { bJ, setBJ } = useContext(gameContext);
 	const [currentCard, setCurrentCard] = useState();
-	const { deck, setDeck } = useContext(deckContext);
 	const isMounted = useRef(false);
 
 	const handleClick = (event) => {
-		const newSetURL = `https://deckofcardsapi.com/api/deck/${deck}/draw/?count=4`;
+		const newSetURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/draw/?count=4`;
 		const fetchSet = () => {
 			fetch(newSetURL)
 				.then((res) => res.json())
@@ -24,8 +25,8 @@ function NewSet() {
 		} else {
 			const dHand = `${[currentCard[0].code]},${[currentCard[2].code]}`;
 			const pHand = `${[currentCard[1].code]},${[currentCard[3].code]}`;
-			const dealerURL = `https://deckofcardsapi.com/api/deck/${deck}/pile/dealer/add/?cards=${dHand}`;
-			const playerURL = `https://deckofcardsapi.com/api/deck/${deck}/pile/playerA/add/?cards=${pHand}`;
+			const dealerURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/dealer/add/?cards=${dHand}`;
+			const playerURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/add/?cards=${pHand}`;
 			console.log(dealerURL);
 			fetch(dealerURL)
 				.then((res) => res.json())
@@ -58,7 +59,7 @@ function NewSet() {
 			<button type='button' onClick={handleClick}>
 				Start / DealHand
 			</button>
-			<PlayerContainer currentCard={currentCard} />
+			<PlayerContainer />
 		</div>
 	);
 }

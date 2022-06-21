@@ -1,38 +1,45 @@
 import { useState, useContext, useEffect, useRef } from 'react';
-import { deckContext } from '../components/context/deckContext';
-import { playerContext } from '../components/context/playerContext';
+import { gameContext } from '../components/context/gameContext';
+import { useFetch } from '../components/hooks/useFetch';
 import Dealer from '../components/Dealer';
 import PlayerA from '../components/PlayerA';
+import { useMap } from '../components/hooks/useMap';
 
-function PlayerContainer({ currentCard }) {
-	const { deck, setDeck } = useContext(deckContext);
-	const [dealer, setDealer] = useState('');
-	const isMounted = useRef(false);
+function PlayerContainer() {
+	const { bJ, setBJ } = useContext(gameContext);
 
-	const fetchHand = async () => {
-		const dealerListURL = `https://deckofcardsapi.com/api/deck/${deck}/pile/dealer/list/`;
-		const playerAListURL = `https://deckofcardsapi.com/api/deck/${deck}/pile/playerA/list/`;
-		await fetch(dealerListURL)
-			.then((res) => res.json())
-			.then((res) => {
-				setDealer(res.piles.dealer.cards);
-				return fetch(playerAListURL);
-			});
-	};
+	const dealerListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/dealer/list/`;
+	const playerAListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/list/`;
 
-	// console.log(playerA, dealer);
+	const dealersHand = useMap(dealerListURL);
+	// console.log(dealersHand.data.map((element,key) => {}));
+	function testDealer() {
+		setBJ({ ...bJ, dealer: dealersHand.data });
+	}
 
 	useEffect(() => {
-		fetchHand();
-	}, [currentCard, deck]);
+		testDealer();
+	}, [dealersHand]);
+	// const fetchHand=() => {
+	// 	fetch(dealerListURL)
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			setDealer(...dealer, [res.piles.dealer.cards]);
+	// 			return fetch(playerAListURL);
+	// 		})
+	// 		.then((res) => res.json())
+	// 		.then((res) => {
+	// 			setPlayerA(...playerA[res.piles.dealer.cards]);
+	// 		});
+	// };
 
-	return (
-		<div>
-			<playerContext.Provider value={{ dealer, setDealer }}>
-				<Dealer />
-			</playerContext.Provider>
-		</div>
-	);
+	// // console.log(playerA, dealer);
+
+	// useEffect(() => {
+	// 	fetchHand();
+	// }, [dealerListURL, playerAListURL]);
+
+	return <div></div>;
 }
 
 export default PlayerContainer;

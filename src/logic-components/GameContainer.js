@@ -1,50 +1,33 @@
-import { useState, useEffect, useRef } from 'react';
-import { deckContext } from '../components/context/deckContext';
+import { useState, useEffect, useMemo } from 'react';
+import { useDeck } from '../components/hooks/useDeck';
+import { gameContext } from '../components/context/gameContext';
 import BlackJack from '../components/BlackJack';
 
+const game = {
+	deck: '',
+	dealer: { cards: [{ code: '', image: '', value: '' }] },
+	playerA: { cards: [{ code: '', image: '', value: '' }] },
+};
+
 function GameContainer() {
-	const [deck, setDeck] = useState('');
-	const isMounted = useRef(true);
-
-	const URL = `https://deckofcardsapi.com/api/deck/6zxbphufrmn6/`;
-
-	const NEW_DECK_URL =
-		'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1';
-
-	const verifyDeck = () => {
-		fetch(URL)
-			.then((res) => res.json())
-			.then((res) => {
-				if (res.success === true) {
-					return setDeck(res.deck_id);
-				} else if (res.success === false) {
-					fetchDeck();
-				}
-			});
-	};
-
-	const fetchDeck = () => {
-		fetch(NEW_DECK_URL)
-			.then((res) => {
-				return res.json();
-			})
-			.then((res) => {
-				return setDeck(res.deck_id);
-			})
-			.catch((err) => {
-				console.log('somethings wrong', err);
-			});
-	};
+	const [bJ, setBJ] = useState(game);
+	const { deck, setDeck } = useDeck();
+	const gameUpdate = useMemo(() => ({ bJ: bJ, setBJ: setBJ }), [bJ, setBJ]);
 
 	useEffect(() => {
-		verifyDeck();
+		if ([deck][0].loading === true) {
+			console.log('loading');
+			setTimeout(1000);
+		} else if ([deck][0].loading === false) {
+			setBJ({ ...bJ, deck: [deck][0].deckID });
+		}
 	}, [deck]);
 
 	return (
 		<div>
-			<deckContext.Provider value={{ deck, setDeck }}>
+			<gameContext.Provider value={gameUpdate}>
 				<BlackJack />
-			</deckContext.Provider>
+			</gameContext.Provider>
 		</div>
 	);
 }
