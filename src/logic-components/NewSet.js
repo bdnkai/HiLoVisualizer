@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import { gameContext } from '../components/context/gameContext';
-import PlayerContainer from './PlayerContainer';
+import Dealer from '../components/Dealer';
+import PlayerA from '../components/PlayerA';
 
 function NewSet() {
 	const { bJ, setBJ } = useContext(gameContext);
@@ -8,7 +9,7 @@ function NewSet() {
 	const isMounted = useRef(false);
 
 	const handleClick = (event) => {
-		event.preventDefault();
+		// event.preventDefault();
 		const newSetURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/draw/?count=4`;
 
 		const fetchSet = () => {
@@ -61,7 +62,8 @@ function NewSet() {
 			<button type='button' onClick={handleClick}>
 				Start / DealHand
 			</button>
-			{bJ.start === true ? <PlayerContainer /> : console.log('false')}
+			{currentCard && <Dealer />}
+			{bJ.dealer && <PlayerA />}
 		</div>
 	);
 }

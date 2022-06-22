@@ -1,9 +1,31 @@
-import { useContext } from 'react';
-import PlayerContainer from '../logic-components/PlayerContainer';
-import { gameContext } from './context/gameContext';
+import { useState, useContext, useEffect, useRef } from 'react';
+import { gameContext } from '../components/context/gameContext';
 
 function Dealer() {
-	const { dealer, setDealer } = useContext(gameContext);
+	const { bJ, setBJ } = useContext(gameContext);
+	const dealerListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/dealer/list/`;
+	let isMounted = useRef(true);
+
+	const fetchHand = () => {
+		if (bJ.updateNeeded === true) {
+			fetch(dealerListURL)
+				.then((res) => res.json())
+				.then((res) => {
+					console.log(res);
+					return setBJ({ ...bJ, dealer: res.piles.dealer.cards });
+				});
+		}
+	};
+
+	useEffect(() => {
+		if (isMounted) {
+			if (bJ.updateNeeded === true) {
+				fetchHand();
+			}
+			return setBJ({ ...bJ, updateNeeded: false });
+		}
+		isMounted = false;
+	}, [dealerListURL]);
 
 	return <>hi</>;
 }
