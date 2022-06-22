@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import { gameContext } from '../components/context/gameContext';
-import { useFetch } from '../components/hooks/useFetch';
 import PlayerContainer from './PlayerContainer';
 
 function NewSet() {
@@ -9,7 +8,9 @@ function NewSet() {
 	const isMounted = useRef(false);
 
 	const handleClick = (event) => {
+		event.preventDefault();
 		const newSetURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/draw/?count=4`;
+
 		const fetchSet = () => {
 			fetch(newSetURL)
 				.then((res) => res.json())
@@ -18,6 +19,7 @@ function NewSet() {
 				});
 		};
 		fetchSet();
+		setBJ({ ...bJ, start: true, updateNeeded: true });
 	};
 	const dealSet = () => {
 		if (currentCard === undefined) {
@@ -45,7 +47,7 @@ function NewSet() {
 				handleClick();
 			}
 		},
-		[handleClick, dealSet]
+		[currentCard]
 	);
 
 	useEffect(() => {
@@ -59,7 +61,7 @@ function NewSet() {
 			<button type='button' onClick={handleClick}>
 				Start / DealHand
 			</button>
-			<PlayerContainer setCurrentCard={setCurrentCard} currentCard={currentCard}/>
+			{bJ.start === true ? <PlayerContainer /> : console.log('false')}
 		</div>
 	);
 }

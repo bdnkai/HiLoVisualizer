@@ -1,12 +1,21 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import { useDeck } from '../components/hooks/useDeck';
 import { gameContext } from '../components/context/gameContext';
 import BlackJack from '../components/BlackJack';
 
 const game = {
-	deck: '',
-	dealer: { cards: [{ code: '', image: '', value: '' }] },
-	playerA: { cards: [{ code: '', image: '', value: '' }] },
+	deck: null,
+	start: false,
+	restart: false,
+	dealer: null,
+	dealerTurn: false,
+	dealerHit: false,
+	dealerStay: false,
+	playerA: null,
+	playerTurn: false,
+	playerHit: false,
+	playerStay: false,
+	updateNeeded: false,
 };
 
 function GameContainer() {

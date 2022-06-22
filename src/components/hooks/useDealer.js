@@ -1,8 +1,9 @@
+import { wait } from '@testing-library/user-event/dist/utils';
 import { useEffect, useState } from 'react';
 
 export const useDealer = (dealerURL) => {
 	const [state, setState] = useState({
-		dealerCard: '',
+		dealerCard: null,
 		loading: false,
 	});
 
@@ -13,9 +14,12 @@ export const useDealer = (dealerURL) => {
 				return res.json();
 			})
 			.then((res) => {
-				return setState({ dealerCard: res.piles.dealer.cards, loading: false });
+				return setState({
+					dealerCard: res.piles.dealer.cards,
+					loading: false,
+				});
 			});
-	}, [dealerURL]);
+	}, [useDealer]);
 
 	return state;
 };

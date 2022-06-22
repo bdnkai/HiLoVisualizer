@@ -1,9 +1,7 @@
 import NewSet from '../logic-components/NewSet';
-import PlayerContainer from '../logic-components/PlayerContainer';
+import { useHandleStart } from './hooks/useHandleStart';
 
 function BlackJack() {
-	
-
 	return (
 		<div>
 			<NewSet />
