@@ -9,8 +9,7 @@ function NewSet() {
 	const [dealerCode, setDealerCode] = useState();
 	let isSetMounted = useRef(true);
 
-	// const handleClick = (event) => {
-	// event.preventDefault();
+
 	function fetchSet() {
 		if (bJ.restart == true) {
 			const newSetURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/draw/?count=4`;

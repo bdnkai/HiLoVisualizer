@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { gameContext } from '../../components/context/gameContext';
 
 function Dealer() {

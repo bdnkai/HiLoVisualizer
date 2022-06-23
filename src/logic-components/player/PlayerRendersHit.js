@@ -1,37 +1,35 @@
 import { useContext, useEffect, useRef } from 'react';
 import { gameContext } from '../../components/context/gameContext';
 
-function PlayerA() {
+function PlayerRendersHit() {
 	const { bJ, setBJ } = useContext(gameContext);
-	const playerAListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/list/`;
-
+	const playerListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/list/`;
 	let isMounted = useRef(true);
 
-	function fetchHand() {
-		fetch(playerAListURL)
+	const fetchHand = () => {
+		fetch(playerListURL)
 			.then((res) => res.json())
 			.then((res) => {
+				console.log(res);
 				setTimeout(() => {
 					return setBJ({
 						...bJ,
 						playerA: res.piles.playerA.cards,
-						updateNeeded: false,
+						playerHit: false,
 					});
 				}, 300);
 			});
-	}
+	};
+
 	useEffect(() => {
 		if (isMounted) {
-			setTimeout(() => {
-				if (bJ.updateNeeded === true) {
-					fetchHand();
-				}
-			}, 700);
+			if (bJ.playerHit == true) {
+				fetchHand();
+			}
+			return setBJ({ ...bJ, playerHit: false });
 		}
 		isMounted = false;
-	});
-
-	return <div></div>;
+	}, [playerListURL]);
 }
 
-export default PlayerA;
+export default PlayerRendersHit;

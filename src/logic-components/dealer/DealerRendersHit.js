@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { gameContext } from '../../components/context/gameContext';
 
 function DealerRendersHit() {
@@ -30,8 +30,6 @@ function DealerRendersHit() {
 		}
 		isMounted = false;
 	}, [dealerListURL]);
-
-	return <div></div>;
 }
 
 export default DealerRendersHit;
