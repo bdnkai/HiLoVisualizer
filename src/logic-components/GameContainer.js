@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useContext } from 'react';
 import { useDeck } from '../components/hooks/useDeck';
 import { gameContext } from '../components/context/gameContext';
 import BlackJack from '../components/BlackJack';
+import HiLoCounter from './HiLoCounter';
 
 const game = {
 	deck: null,
@@ -36,7 +37,8 @@ function GameContainer() {
 	return (
 		<div className='GameContainer'>
 			<gameContext.Provider value={gameUpdate}>
-				{bJ && <BlackJack />}
+				{<BlackJack />}
+				<>HI</>
 			</gameContext.Provider>
 		</div>
 	);

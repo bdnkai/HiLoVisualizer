@@ -7,7 +7,6 @@ import PlayerHit from '../logic-components/player/PlayerHit';
 
 function BlackJack() {
 	const { bJ, setBJ } = useContext(gameContext);
-
 	const {
 		handleStart,
 		handleDealerHit,
@@ -40,7 +39,6 @@ function BlackJack() {
 					</button>
 				</div>
 			) : null}
-
 			{bJ.dealerHit == true ? <DealerHit /> : null}
 			{/*------------------------- */}
 			{/*----------Player Hit / Stay ---------- */}
@@ -58,6 +56,7 @@ function BlackJack() {
 				</div>
 			) : null}
 			{bJ.playerHit == true ? <PlayerHit /> : null}
+			FROM BLACKJACK
 		</div>
 	);
 }
