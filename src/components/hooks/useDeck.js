@@ -14,7 +14,7 @@ export const useDeck = () => {
 			})
 			.then((res) => {
 				if (res.success === true) {
-					setDeck({ ...deck, deckID: res.deck_id, loading: false });
+					return setDeck({ ...deck, deckID: res.deck_id, loading: false });
 				} else if (res.success === false) {
 					fetchDeck();
 				}
@@ -27,7 +27,7 @@ export const useDeck = () => {
 				return res.json();
 			})
 			.then((res) => {
-				setDeck(res.deck_id);
+				return setDeck({ ...deck, deckID: res.deck_id, loading: false });
 			})
 			.catch((err) => {
 				console.log('somethings wrong', err);
@@ -36,7 +36,7 @@ export const useDeck = () => {
 
 	useEffect(() => {
 		verifyDeck();
-	}, [setDeck]);
+	}, [URL]);
 
-	return {deck};
+	return { deck };
 };

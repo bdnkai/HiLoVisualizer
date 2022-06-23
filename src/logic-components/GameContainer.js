@@ -24,18 +24,19 @@ function GameContainer() {
 	const gameUpdate = useMemo(() => ({ bJ: bJ, setBJ: setBJ }), [bJ, setBJ]);
 
 	useEffect(() => {
-		if ([deck][0].loading === true) {
+		if (deck.loading === true) {
 			console.log('loading');
-			setTimeout(1000);
-		} else if ([deck][0].loading === false) {
-			setBJ({ ...bJ, deck: [deck][0].deckID });
+		} else {
+			setTimeout(() => {
+				setBJ({ ...bJ, deck: deck.deckID });
+			}, 200);
 		}
 	}, [deck]);
 
 	return (
-		<div>
+		<div className='GameContainer'>
 			<gameContext.Provider value={gameUpdate}>
-				<BlackJack />
+				{bJ && <BlackJack />}
 			</gameContext.Provider>
 		</div>
 	);
