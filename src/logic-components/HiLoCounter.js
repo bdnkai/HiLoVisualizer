@@ -1,6 +1,7 @@
 import React from 'react';
 
-const HiLoCounter = () => {
+function HiLoCounter() {
+    
     return (
         <div>
             

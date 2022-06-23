@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import { gameContext } from '../components/context/gameContext';
-import Dealer from './dealer/Dealer';
-import PlayerA from './player/Player';
+import Dealer from './dealer/DealerSet';
+import PlayerA from './player/PlayerSet';
 
 function NewSet() {
 	const { bJ, setBJ } = useContext(gameContext);
