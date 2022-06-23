@@ -16,14 +16,15 @@ function BlackJack() {
 		handleDealerStay,
 	} = useHandle();
 
-
 	return (
 		<div>
 			{/*------ START BUTTON ----- */}
-			<button className='start' type='button' onClick={handleStart}>
-				Start / DealHand
-				{(bJ.start == true) & (bJ.updateNeeded == true) ? <NewSet /> : null}
-			</button>
+			{bJ.start == false ? (
+				<button className='start' type='button' onClick={handleStart}>
+					Start / DealHand
+				</button>
+			) : null}
+			{(bJ.start == true) & (bJ.updateNeeded == true) ? <NewSet /> : null}
 			{/*------------------------- */}
 			{/*------ DEALER HIT / Stay ------- */}
 			{bJ.dealerTurn == true ? (

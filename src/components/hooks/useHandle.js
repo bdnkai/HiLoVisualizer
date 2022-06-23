@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { gameContext } from '../context/gameContext';
 
 export function useHandle() {
 	const { bJ, setBJ } = useContext(gameContext);
-	const [handle, setHandle] = useState();
 
 	function handleStart(event) {
+		event.preventDefault();
 		setBJ({
 			...bJ,
 			start: true,
@@ -19,15 +19,11 @@ export function useHandle() {
 	function handleDealerHit(event) {
 		event.preventDefault();
 		setBJ({ ...bJ, dealerHit: true });
-		if (bJ.dealerHit == true) {
-		}
 	}
 
 	function handlePlayerHit(event) {
 		event.preventDefault();
 		setBJ({ ...bJ, playerHit: true });
-		if (bJ.playerHit == true) {
-		}
 	}
 
 	function handleDealerStay(event) {
