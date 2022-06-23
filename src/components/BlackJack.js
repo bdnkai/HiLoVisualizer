@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { gameContext } from './context/gameContext';
+import { useHandle } from './hooks/useHandle';
 import NewSet from '../logic-components/NewSet';
 import DealerHit from '../logic-components/dealer/DealerHit';
 import PlayerHit from '../logic-components/player/PlayerHit';
@@ -7,40 +8,15 @@ import PlayerHit from '../logic-components/player/PlayerHit';
 function BlackJack() {
 	const { bJ, setBJ } = useContext(gameContext);
 
-	function handleStart(event) {
-		setBJ({
-			...bJ,
-			start: true,
-			dealerTurn: false,
-			playerTurn: true,
-			updateNeeded: true,
-			restart: true,
-		});
-	}
+	const {
+		handleStart,
+		handleDealerHit,
+		handlePlayerHit,
+		handlePlayerStay,
+		handleDealerStay,
+	} = useHandle();
 
-	function handleDealerHit(event) {
-		event.preventDefault();
-		setBJ({ ...bJ, dealerHit: true });
-		if (bJ.dealerHit == true) {
-		}
-	}
 
-	function handlePlayerHit(event) {
-		event.preventDefault();
-		setBJ({ ...bJ, playerHit: true });
-		if (bJ.playerHit == true) {
-		}
-	}
-
-	function handleDealerStay(event) {
-		event.preventDefault();
-		setBJ({ ...bJ, dealerTurn: false, dealerStay: true });
-	}
-
-	function handlePlayerStay(event) {
-		event.preventDefault();
-		setBJ({ ...bJ, playerTurn: false, playerStay: true, dealerTurn: true });
-	}
 	return (
 		<div>
 			{/*------ START BUTTON ----- */}
