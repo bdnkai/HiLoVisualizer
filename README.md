@@ -10,9 +10,13 @@ A front end BlackJack Card Counting application that utilizes an API to, generat
 
 ## WireFrame / Hierarchy
 
-<img src="/HiLoVisualizer/src/assets/WireFrame-Cards.png"/>
-<img src="/HiLoVisualizer/src/assets/Hiearchy-CardGames.png"/>
-
+<br />
+![Hiearchy-CardGames](https://user-images.githubusercontent.com/52808679/175655879-1102d7d7-2ec0-4779-883a-25ef18b37b01.png)
+<br />
+<br />
+![WireFrame-Cards](https://user-images.githubusercontent.com/52808679/175655839-f360e9c9-831b-4e01-888c-a5571af06a51.png)
+<br />
+<br />
 ---
 
 ## Technologies:
