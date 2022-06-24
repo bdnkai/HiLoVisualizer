@@ -1,7 +1,7 @@
 # Brandon Nguyen's Hi-Lo Visualizer
 
 Welcome!<br />
-A front end BlackJack Card Counting application that utilizes an API to, generate, shuffle, and draws from a deck of playing cards. The goal is to showcase only the odds based on the card that is presented on the table. The actual game itself will be a stretch goal.
+A front end BlackJack Card Counting application that utilizes an API to, generate, shuffle, and draws from a deck of playing cards. The goal is to showcase only the odds based on the card that is presented on the table. The actual game itself is still in the making
 
 <br />
 <br />
@@ -60,11 +60,11 @@ A front end BlackJack Card Counting application that utilizes an API to, generat
 
 - Successfully pull API to fetch Card Deck ID and then Draw from that specific deck
 
-- Have at least 4 components connected to each other
-
 - Connect components through React Router
 
 - Be organized with components and custom hooks
+
+- Applying everything that I learned through this section of react
 
 <br />
 
