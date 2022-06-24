@@ -4,9 +4,9 @@ import { gameContext } from '../context/gameContext';
 function playerReducer(playerCount, action) {
 	switch (action.type) {
 		case 'INCREMENT':
-			return playerCount + 1;
+			return playerCount + (0.5 + 0.5);
 		case 'DECREMENT':
-			return playerCount - 1;
+			return playerCount - (0.5 - 0.5);
 		default:
 			return playerCount - playerCount;
 	}
@@ -14,9 +14,9 @@ function playerReducer(playerCount, action) {
 function dealerReducer(dealerCount, action) {
 	switch (action.type) {
 		case 'INCREMENT':
-			return dealerCount + 1;
+			return dealerCount + (0.5 + 0.5) - 1;
 		case 'DECREMENT':
-			return dealerCount - 1;
+			return dealerCount - (0.5 - 0.5) - 1;
 		default:
 			return dealerCount - dealerCount;
 	}
