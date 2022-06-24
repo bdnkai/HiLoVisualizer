@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 export const useDeck = () => {
 	const [deck, setDeck] = useState({ deckID: '', loading: true });
 
-	const URL = `https://deckofcardsapi.com/api/deck/6zxbphufrmn6/`;
+	const URL = `https://deckofcardsapi.com/api/deck/6zxbphufrmn4/`;
 	const NEW_DECK_URL =
 		'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1';
 
@@ -30,7 +30,7 @@ export const useDeck = () => {
 				return setDeck({ ...deck, deckID: res.deck_id, loading: false });
 			})
 			.catch((err) => {
-				console.log('somethings wrong', err);
+				
 			});
 	};
 

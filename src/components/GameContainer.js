@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo, useContext } from 'react';
-import { useDeck } from '../components/hooks/useDeck';
-import { gameContext } from '../components/context/gameContext';
-import BlackJack from '../components/BlackJack';
-import HiLoCounter from './HiLoCounter';
+import { useDeck } from './hooks/useDeck';
+import { gameContext } from './context/gameContext';
+import BlackJack from './BlackJack';
+
 
 const game = {
 	deck: null,

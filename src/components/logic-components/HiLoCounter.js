@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useReducer } from 'react';
-import { gameContext } from '../components/context/gameContext';
+import { gameContext } from '../context/gameContext';
 
 function playerReducer(playerCount, action) {
 	switch (action.type) {
@@ -8,7 +8,7 @@ function playerReducer(playerCount, action) {
 		case 'DECREMENT':
 			return playerCount - 1;
 		default:
-			return 0 + playerCount - playerCount;
+			return playerCount ;
 	}
 }
 function dealerReducer(dealerCount, action) {
@@ -18,7 +18,7 @@ function dealerReducer(dealerCount, action) {
 		case 'DECREMENT':
 			return dealerCount - 1;
 		default:
-			return 0 + dealerCount - dealerCount;
+			return dealerCount;
 	}
 }
 function HiLoCounter() {
@@ -26,16 +26,13 @@ function HiLoCounter() {
 	const [playerCount, dispatchPlayerCount] = useReducer(playerReducer, 0);
 	const [dealerCount, dispatchDealerCount] = useReducer(dealerReducer, 0);
 	const [total, setTotal] = useState();
-	const [pHandValue, setPHandValue] = useState(0);
-	const [dHandValue, setDHandValue] = useState(0);
+
 
 	function hiLoCount() {
 		if (bJ.playerA) {
-			// bJ.playerA.filter((element) => console.log(element != element));
-			// console.log(test);
 			bJ.playerA.map((pCard, index) => {
 				const test = bJ.playerA.filter((element) => element.code == pCard.code);
-				// console.log(pCard.filter((element) => element == element));
+
 				if (pCard.value <= 6 && pCard.code != test) {
 					dispatchPlayerCount({ type: 'INCREMENT' });
 				}
@@ -73,50 +70,45 @@ function HiLoCounter() {
 		{
 			bJ.playerA && hiLoCount();
 		}
+		return dispatchDealerCount(0)
 	}, [bJ]);
 
 	return (
-		<>
-			<div></div>
-			<div>
-				<h3>Player</h3>
-				<p>Hi-Lo Value: {playerCount}</p>
-				<div>
-					{bJ.playerA &&
-						bJ.playerA.map((pCard, index) => {
+		<body>
+			<div className='HiLo'>
+				<div className='PlayerValues'>
+					<p>HI-LO: {playerCount}</p>
+					<div>
+						{bJ.playerA &&
+							bJ.playerA.map((pCard, index) => {
+								return (
+									<div className='PlayerCards'>
+										<ul>
+											<li key={pCard.code}></li>
+											<img src={pCard.image} alt='' id='CardImagePlayer' />
+										</ul>
+									</div>
+								);
+							})}
+					</div>
+				</div>
+				<div className='DealerValues'>
+					<h3>Dealer</h3>
+					<p>Hi-Lo Value: {dealerCount}</p>
+					{bJ.dealer &&
+						bJ.dealer.map((dCard, index) => {
 							return (
-								<div className='PlayerCards'>
+								<div className='DealerCards'>
 									<ul>
-										<li key={pCard.code}>
-											{pCard.value}
-											{pCard.suit}
-										</li>
-										<img src={pCard.image} alt='' id='CardImage' />
+										<li key={dCard.code}></li>
+										<img src={dCard.image} alt='' id='CardImageDealer' />
 									</ul>
 								</div>
 							);
 						})}
 				</div>
 			</div>
-			<div>
-				<h3>Dealer:</h3>
-				<p>Hi-Lo Value: {dealerCount}</p>
-				{bJ.dealer &&
-					bJ.dealer.map((dCard, index) => {
-						return (
-							<div className='DealerCards'>
-								<ul>
-									<li key={dCard.code}>
-										{dCard.value}
-										{dCard.suit}
-									</li>
-									<img src={dCard.image} alt='' id='CardImage' />
-								</ul>
-							</div>
-						);
-					})}
-			</div>
-		</>
+		</body>
 	);
 }
 

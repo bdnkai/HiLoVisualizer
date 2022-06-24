@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from 'react';
-import { gameContext } from '../../components/context/gameContext';
+import { gameContext } from '../../context/gameContext';
 
 function DealerRendersHit() {
 	const { bJ, setBJ } = useContext(gameContext);
@@ -10,7 +10,7 @@ function DealerRendersHit() {
 		fetch(dealerListURL)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
+				
 				setTimeout(() => {
 					return setBJ({
 						...bJ,

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
-import { gameContext } from '../../components/context/gameContext';
+import { gameContext } from '../../context/gameContext';
 
-function PlayerA() {
+function PlayerSet() {
 	const { bJ, setBJ } = useContext(gameContext);
 	const playerAListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/list/`;
 
@@ -17,7 +17,7 @@ function PlayerA() {
 						playerA: res.piles.playerA.cards,
 						updateNeeded: false,
 					});
-				}, 300);
+				}, 250);
 			});
 	}
 	useEffect(() => {
@@ -26,7 +26,7 @@ function PlayerA() {
 				if (bJ.updateNeeded === true) {
 					fetchHand();
 				}
-			}, 700);
+			}, 400);
 		}
 		isMounted = false;
 	});
@@ -34,4 +34,4 @@ function PlayerA() {
 	return <div></div>;
 }
 
-export default PlayerA;
+export default PlayerSet;

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
-import { gameContext } from '../../components/context/gameContext';
+import { gameContext } from '../../context/gameContext';
 
-function Dealer() {
+function DealerSet() {
 	const { bJ, setBJ } = useContext(gameContext);
 	const dealerListURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/dealer/list/`;
 	let isMounted = useRef(true);
@@ -32,4 +32,4 @@ function Dealer() {
 	return <></>;
 }
 
-export default Dealer;
+export default DealerSet;

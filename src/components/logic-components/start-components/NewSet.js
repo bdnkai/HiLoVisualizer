@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react';
-import { gameContext } from '../components/context/gameContext';
-import Dealer from './dealer/DealerSet';
-import PlayerA from './player/PlayerSet';
+import { gameContext } from '../../context/gameContext';
+import DealerSet from '../start-components/DealerSet';
+import PlayerSet from '../start-components/PlayerSet';
 
 function NewSet() {
 	const { bJ, setBJ } = useContext(gameContext);
@@ -16,7 +16,7 @@ function NewSet() {
 				.then((res) => res.json())
 				.then((res) => {
 					setTimeout(() => {
-						console.log(res.cards);
+						
 						return setCurrentCard(res.cards);
 					}, 1000);
 				});
@@ -34,7 +34,7 @@ function NewSet() {
 		fetch(dealerURL)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
+			
 				return fetch(playerURL);
 			})
 			.then((res) => res.json())
@@ -61,8 +61,8 @@ function NewSet() {
 
 	return (
 		<div>
-			{dealerCode && <Dealer />}
-			{bJ.dealer && <PlayerA />}
+			{dealerCode && <DealerSet />}
+			{bJ.dealer && <PlayerSet />}
 		</div>
 	);
 }

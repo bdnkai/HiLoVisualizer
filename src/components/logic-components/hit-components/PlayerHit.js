@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, useRef } from 'react';
-import { gameContext } from '../../components/context/gameContext';
-import PlayerRendersHit from './PlayerRendersHit';
+import { gameContext } from '../../context/gameContext';
+import PlayerRendersHit from '../render-hit-components/PlayerRendersHit';
 
 function PlayerHit() {
 	const { bJ, setBJ } = useContext(gameContext);
@@ -16,7 +16,7 @@ function PlayerHit() {
 				return res.json();
 			})
 			.then((res) => {
-				console.log(res);
+				
 				setTimeout(() => {
 					setPlayerHit(res.cards);
 				}, 300);
@@ -32,7 +32,7 @@ function PlayerHit() {
 			.then((res) => {
 				setTimeout(() => {
 					setPlayerCode('success');
-					console.log(`${playerCode}`);
+					
 				}, 300);
 			});
 	};
