@@ -8,7 +8,7 @@ function playerReducer(playerCount, action) {
 		case 'DECREMENT':
 			return playerCount - 1;
 		default:
-			return playerCount ;
+			return playerCount - playerCount;
 	}
 }
 function dealerReducer(dealerCount, action) {
@@ -18,7 +18,7 @@ function dealerReducer(dealerCount, action) {
 		case 'DECREMENT':
 			return dealerCount - 1;
 		default:
-			return dealerCount;
+			return dealerCount - dealerCount;
 	}
 }
 function HiLoCounter() {
@@ -26,7 +26,6 @@ function HiLoCounter() {
 	const [playerCount, dispatchPlayerCount] = useReducer(playerReducer, 0);
 	const [dealerCount, dispatchDealerCount] = useReducer(dealerReducer, 0);
 	const [total, setTotal] = useState();
-
 
 	function hiLoCount() {
 		if (bJ.playerA) {
@@ -70,7 +69,6 @@ function HiLoCounter() {
 		{
 			bJ.playerA && hiLoCount();
 		}
-		return dispatchDealerCount(0)
 	}, [bJ]);
 
 	return (
