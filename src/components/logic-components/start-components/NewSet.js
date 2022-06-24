@@ -17,7 +17,7 @@ function NewSet() {
 				.then((res) => {
 					setTimeout(() => {
 						return setCurrentCard(res.cards);
-					}, 1000);
+					}, 200);
 				});
 
 			setBJ({ ...bJ, restart: false });
