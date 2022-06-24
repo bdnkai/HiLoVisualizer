@@ -38,7 +38,6 @@ function GameContainer() {
 		<div className='GameContainer'>
 			<gameContext.Provider value={gameUpdate}>
 				{<BlackJack />}
-				<>HI</>
 			</gameContext.Provider>
 		</div>
 	);
