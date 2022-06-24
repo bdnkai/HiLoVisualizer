@@ -7,6 +7,13 @@ A front end BlackJack Card Counting application that utilizes an API to, generat
 <br />
 
 ---
+## WireFrame / Hierarchy
+
+![sitephoto](https://user-images.githubusercontent.com/52808679/175698975-535a5d8a-3cbe-487f-aa2d-e259a8b04259.png)![carddraw](https://user-images.githubusercontent.com/52808679/175698987-ae353bab-684f-4662-8073-f537521a6bcc.png)![mobile view](https://user-images.githubusercontent.com/52808679/175698965-0bb2bf77-a927-4e0f-898e-a3170e8173f2.png)
+
+
+
+---
 
 ## WireFrame / Hierarchy
 
