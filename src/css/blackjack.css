@@ -313,10 +313,10 @@
     }
 
     .DealerCards {
-            display: inline-flex;
-            flex-direction: row;
-              min-width: 5px;
-              min-height: 5px
+        display: inline-flex;
+        flex-direction: row;
+        min-width: 5px;
+        min-height: 5px
         }
     
      #CardImagePlayer,
