@@ -349,8 +349,6 @@
 
     .BlackJack{
         display: flex;
-;
-        background-image:image('/src/assets/bjheader.jpg');
         justify-content: center;
         text-align: center;
         margin-right: 10%;
@@ -358,8 +356,6 @@
         grid-row: 1;
         font-size: 150%;
         font-weight: Bold;
-        grid-template-columns: repeat(9, 3fr);
-        grid-template-rows: repeat(9, 3fr);
         padding: 2%;
         
     }
