@@ -11,7 +11,6 @@ function DealerSet() {
 			fetch(dealerListURL)
 				.then((res) => res.json())
 				.then((res) => {
-					console.log(res);
 					return setBJ({ ...bJ, dealer: res.piles.dealer.cards });
 				});
 		}
@@ -23,7 +22,7 @@ function DealerSet() {
 				if (bJ.updateNeeded === true) {
 					fetchHand();
 				}
-			}, 400);
+			}, 100);
 			return setBJ({ ...bJ, updateNeeded: false });
 		}
 		isMounted = false;

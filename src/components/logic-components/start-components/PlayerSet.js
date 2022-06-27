@@ -17,7 +17,7 @@ function PlayerSet() {
 						playerA: res.piles.playerA.cards,
 						updateNeeded: false,
 					});
-				}, 250);
+				}, 100);
 			});
 	}
 	useEffect(() => {
@@ -26,7 +26,7 @@ function PlayerSet() {
 				if (bJ.updateNeeded === true) {
 					fetchHand();
 				}
-			}, 400);
+			}, 100);
 		}
 		isMounted = false;
 	});

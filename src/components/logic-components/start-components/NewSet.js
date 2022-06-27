@@ -16,9 +16,8 @@ function NewSet() {
 				.then((res) => res.json())
 				.then((res) => {
 					setTimeout(() => {
-						
 						return setCurrentCard(res.cards);
-					}, 1000);
+					}, 200);
 				});
 
 			setBJ({ ...bJ, restart: false });
@@ -34,7 +33,6 @@ function NewSet() {
 		fetch(dealerURL)
 			.then((res) => res.json())
 			.then((res) => {
-			
 				return fetch(playerURL);
 			})
 			.then((res) => res.json())

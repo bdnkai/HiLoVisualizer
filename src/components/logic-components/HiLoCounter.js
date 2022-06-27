@@ -4,21 +4,21 @@ import { gameContext } from '../context/gameContext';
 function playerReducer(playerCount, action) {
 	switch (action.type) {
 		case 'INCREMENT':
-			return playerCount + 1;
+			return playerCount + (0.5 + 0.5);
 		case 'DECREMENT':
-			return playerCount - 1;
+			return playerCount - (0.5 - 0.5);
 		default:
-			return playerCount ;
+			return playerCount - playerCount;
 	}
 }
 function dealerReducer(dealerCount, action) {
 	switch (action.type) {
 		case 'INCREMENT':
-			return dealerCount + 1;
+			return dealerCount + (0.5 + 0.5) - 1;
 		case 'DECREMENT':
-			return dealerCount - 1;
+			return dealerCount - (0.5 - 0.5) - 1;
 		default:
-			return dealerCount;
+			return dealerCount - dealerCount;
 	}
 }
 function HiLoCounter() {
@@ -26,7 +26,6 @@ function HiLoCounter() {
 	const [playerCount, dispatchPlayerCount] = useReducer(playerReducer, 0);
 	const [dealerCount, dispatchDealerCount] = useReducer(dealerReducer, 0);
 	const [total, setTotal] = useState();
-
 
 	function hiLoCount() {
 		if (bJ.playerA) {
@@ -70,7 +69,6 @@ function HiLoCounter() {
 		{
 			bJ.playerA && hiLoCount();
 		}
-		return dispatchDealerCount(0)
 	}, [bJ]);
 
 	return (

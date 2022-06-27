@@ -16,13 +16,11 @@ export function useHandle() {
 		});
 	}
 
-	function handleDealerHit(event) {
-		event.preventDefault();
+	function handleDealerHit() {
 		setBJ({ ...bJ, dealerHit: true });
 	}
 
-	function handlePlayerHit(event) {
-		event.preventDefault();
+	function handlePlayerHit() {
 		setBJ({ ...bJ, playerHit: true });
 	}
 
