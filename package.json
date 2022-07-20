@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@react-three/fiber": "^8.2.0",
 		"@splinetool/react-spline": "^2.2.1",
 		"@splinetool/runtime": "^0.9.80",
 		"@testing-library/jest-dom": "^5.16.4",
@@ -12,6 +13,7 @@
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "5.0.1",
+		"three": "^0.142.0",
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
