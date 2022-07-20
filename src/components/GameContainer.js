@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo, useContext } from 'react';
+import { useWinLose } from './hooks/useWinLose';
 import { useDeck } from './hooks/useDeck';
 import { gameContext } from './context/gameContext';
 import BlackJack from './BlackJack';
-
 
 const game = {
 	deck: null,
@@ -26,7 +26,6 @@ function GameContainer() {
 
 	useEffect(() => {
 		if (deck.loading === true) {
-			console.log('loading');
 		} else {
 			setTimeout(() => {
 				setBJ({ ...bJ, deck: deck.deckID });

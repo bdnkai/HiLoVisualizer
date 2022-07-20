@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import { gameContext } from '../../context/gameContext';
-import PlayerRendersHit from '../render-hit-components/PlayerRendersHit';
+import PlayerRendersHit from './PlayerRendersHit';
 
 function PlayerHit() {
 	const { bJ, setBJ } = useContext(gameContext);

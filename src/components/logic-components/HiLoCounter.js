@@ -1,66 +1,45 @@
 import { useState, useContext, useEffect, useReducer } from 'react';
 import { gameContext } from '../context/gameContext';
 
-function playerReducer(playerCount, action) {
-	switch (action.type) {
-		case 'INCREMENT':
-			return playerCount + (0.5 + 0.5);
-		case 'DECREMENT':
-			return playerCount - (0.5 - 0.5);
-		default:
-			return playerCount - playerCount;
-	}
-}
-function dealerReducer(dealerCount, action) {
-	switch (action.type) {
-		case 'INCREMENT':
-			return dealerCount + (0.5 + 0.5) - 1;
-		case 'DECREMENT':
-			return dealerCount - (0.5 - 0.5) - 1;
-		default:
-			return dealerCount - dealerCount;
-	}
-}
 function HiLoCounter() {
 	const { bJ, setBJ } = useContext(gameContext);
-	const [playerCount, dispatchPlayerCount] = useReducer(playerReducer, 0);
-	const [dealerCount, dispatchDealerCount] = useReducer(dealerReducer, 0);
-	const [total, setTotal] = useState();
+	let [playerCount, setPlayerCount] = useState([0]);
+	let [dealerCount, setDealerCount] = useState(0);
 
 	function hiLoCount() {
 		if (bJ.playerA) {
-			bJ.playerA.map((pCard, index) => {
-				const test = bJ.playerA.filter((element) => element.code == pCard.code);
-
-				if (pCard.value <= 6 && pCard.code != test) {
-					dispatchPlayerCount({ type: 'INCREMENT' });
+			bJ.playerA.filter((pCard, index) => {
+				if (pCard.value <= 6) {
+					setPlayerCount(playerCount + 1);
 				}
 				if (
-					((pCard.value >= 10) & (pCard.code != test)) |
-					((pCard.value == 'JACK') & (pCard.code != test)) |
-					((pCard.value == 'QUEEN') & (pCard.code != test)) |
-					((pCard.value == 'KING') & (pCard.code != test)) |
-					((pCard.value == 'ACE') & (pCard.code != test))
+					pCard.value >= 10 ||
+					pCard.value == 'JACK' ||
+					pCard.value == 'QUEEN' ||
+					pCard.value == 'KING' ||
+					pCard.value == 'ACE'
 				) {
-					dispatchPlayerCount('DECREMENT');
-				} else {
+					setPlayerCount(playerCount - 1);
+				} else if (pCard.value > 7) {
+					setPlayerCount(playerCount + 0);
 				}
 			});
 		}
 		if (bJ.dealer) {
-			bJ.dealer.map((dCard, index) => {
-				const test = bJ.playerA.filter((element) => element.code == dCard.code);
-				if (dCard.value <= 6 && dCard.code != test) {
-					dispatchDealerCount({ type: 'INCREMENT' });
+			bJ.dealer.filter((dCard, index) => {
+				if (dCard.value <= 6) {
+					setDealerCount(dealerCount + 1);
 				}
 				if (
-					((dCard.value >= 10) & (dCard.code != test)) |
-					((dCard.value == 'JACK') & (dCard.code != test)) |
-					((dCard.value == 'QUEEN') & (dCard.code != test)) |
-					((dCard.value == 'KING') & (dCard.code != test)) |
-					((dCard.value == 'ACE') & (dCard.code != test))
+					dCard.value >= 10 ||
+					dCard.value == 'JACK' ||
+					dCard.value == 'QUEEN' ||
+					dCard.value == 'KING' ||
+					dCard.value == 'ACE'
 				) {
-					dispatchDealerCount({ type: 'DECREMENT' });
+					setDealerCount(dealerCount - 1);
+				} else if (dCard.value > 7) {
+					setDealerCount(dealerCount + 0);
 				}
 			});
 		}

@@ -7,10 +7,10 @@ function NavContainer() {
 		<div>
 			<nav>
 				<Link to='/'>
-					<h3>HOME</h3>
+					<h3><button></button></h3>
 				</Link>
 				<Link to='/hi-lo-visualizer/' element='GameContainer'>
-					<h3>Hi-Lo Visualizer</h3>
+					<h3><button>Hi-Lo Visualizer</button></h3>
 				</Link>
 			</nav>
 			<main>

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import { gameContext } from '../../context/gameContext';
-import DealerRendersHit from '../render-hit-components/DealerRendersHit';
+import DealerRendersHit from './DealerRendersHit';
 
 function DealerHit() {
 	const { bJ, setBJ } = useContext(gameContext);
@@ -16,7 +16,6 @@ function DealerHit() {
 				return res.json();
 			})
 			.then((res) => {
-				console.log(res);
 				setTimeout(() => {
 					setDealerHit(res.cards);
 				}, 200);
@@ -32,7 +31,6 @@ function DealerHit() {
 			.then((res) => {
 				setTimeout(() => {
 					setDealerCode('success');
-					
 				}, 200);
 			});
 	};

@@ -29,7 +29,6 @@ function NewSet() {
 		const pHand = `${[currentCard[1].code]},${[currentCard[3].code]}`;
 		const dealerURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/dealer/add/?cards=${dHand}`;
 		const playerURL = `https://deckofcardsapi.com/api/deck/${bJ.deck}/pile/playerA/add/?cards=${pHand}`;
-		console.log(dealerURL);
 		fetch(dealerURL)
 			.then((res) => res.json())
 			.then((res) => {
@@ -52,9 +51,7 @@ function NewSet() {
 	}, []);
 
 	useEffect(() => {
-		{
-			currentCard && dealSet();
-		}
+		{currentCard && dealSet();}
 	}, [currentCard]);
 
 	return (

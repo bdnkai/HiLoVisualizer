@@ -1,6 +1,6 @@
 import '../css/blackjack.css';
 import img1 from '../../src/assets/bj.jpg';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { gameContext } from './context/gameContext';
 import { useHandle } from './hooks/useHandle';
 import NewSet from './logic-components/start-components/NewSet';
@@ -17,6 +17,7 @@ function BlackJack() {
 		handlePlayerStay,
 		handleDealerStay,
 	} = useHandle();
+
 
 	return (
 		<>
