@@ -7,6 +7,7 @@ import NewSet from './logic-components/start-components/NewSet';
 import DealerHit from './logic-components/hit-components/DealerHit';
 import PlayerHit from './logic-components/hit-components/PlayerHit';
 import HiLoCounter from './logic-components/HiLoCounter';
+import Spline from '@splinetool/react-spline';
 
 function BlackJack() {
 	const { bJ, setBJ } = useContext(gameContext);
@@ -17,7 +18,6 @@ function BlackJack() {
 		handlePlayerStay,
 		handleDealerStay,
 	} = useHandle();
-
 
 	return (
 		<>
@@ -82,6 +82,7 @@ function BlackJack() {
 				{bJ.playerHit == true ? <PlayerHit /> : null}
 			</div>
 			<div>{<HiLoCounter />}</div>
+			<Spline scene='https://prod.spline.design/IDA7NSXVaPnjctJc/scene.splinecode' />
 		</>
 	);
 }
