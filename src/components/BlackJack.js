@@ -1,5 +1,4 @@
 import '../css/blackjack.css';
-import img1 from '../../src/assets/bj.jpg';
 import { useContext, useState } from 'react';
 import { gameContext } from './context/gameContext';
 import { useHandle } from './hooks/useHandle';
