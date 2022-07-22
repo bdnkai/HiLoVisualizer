@@ -19,22 +19,22 @@ function BlackJack() {
 	} = useHandle();
 
 	return (
-		<>
+		<div>
 			<div className='BlackJack'>
 				{/*------ START BUTTON ----- */}
 				{bJ.start == false ? (
-					<>
+					<div>
 						<h1 className='title'>BlackJack</h1>
 						<button className='start' type='button' onClick={handleStart}>
 							Start
 						</button>
-					</>
+					</div>
 				) : null}
 				{(bJ.start == true) & (bJ.updateNeeded == true) ? <NewSet /> : null}
 				{/*------------------------- */}
 				{/*------ DEALER HIT / Stay ------- */}
 				{bJ.dealerTurn == true ? (
-					<>
+					<div>
 						<div className='Dealer'>
 							<h2>Dealers Turn</h2>
 						</div>
@@ -52,13 +52,13 @@ function BlackJack() {
 								STAY
 							</button>
 						</div>
-					</>
+					</div>
 				) : null}
 				{bJ.dealerHit == true ? <DealerHit /> : null}
 				{/*------------------------- */}
 				{/*----------Player Hit / Stay ---------- */}
 				{bJ.playerTurn == true ? (
-					<>
+					<div>
 						<div>
 							<h2>Players</h2>
 						</div>
@@ -76,13 +76,13 @@ function BlackJack() {
 								STAY
 							</button>
 						</div>
-					</>
+					</div>
 				) : null}
 				{bJ.playerHit == true ? <PlayerHit /> : null}
 			</div>
 			<div>{<HiLoCounter />}</div>
 			<Spline scene='https://prod.spline.design/IDA7NSXVaPnjctJc/scene.splinecode' />
-		</>
+		</div>
 	);
 }
 
