@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export const useDeck = () => {
-	const [deck, setDeck] = useState({ deckID: '', loading: true });
+	const [deck, setDeck] = useState({ deckID: '', loading: true }); 
 
 	const URL = `https://deckofcardsapi.com/api/deck/6zxbphufrmn56/`;
 	const NEW_DECK_URL =
