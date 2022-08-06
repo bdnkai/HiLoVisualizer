@@ -1,4 +1,4 @@
-import { START, RESTART, PLAYER_HIT, PLAYER_STAY, DEALER_HIT, DEALER_STAY, CALCULATE } from './useCases'
+import { START, RESTART, PLAYER_HIT, PLAYER_STAY, DEALER_HIT, DEALER_STAY, CALCULATE_PLAYER, CALCULATE_DEALER } from './useCases'
 
 const bJReducer = (state, action) => {
    switch (action.type){
@@ -37,11 +37,16 @@ const bJReducer = (state, action) => {
 
          }
          // -------  CASE: CALCULATE  ------- //
-      case CALCULATE: 
-         console.log('Calculate from reducer is functioning')
+      case CALCULATE_PLAYER: 
+         console.log('Calculate_Player from reducer is functioning')
          return{
 
          }
+      case CALCULATE_DEALER: 
+         console.log('Calculate_Dealer from reducer is functioning')
+         return{
+
+         }   
    }
 }
 

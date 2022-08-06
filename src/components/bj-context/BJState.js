@@ -1,11 +1,21 @@
 import { useMemo, useReducer } from "react"
-import {initialState, BJContext } from './BJContext'
-import { START, RESTART, PLAYER_HIT, PLAYER_STAY, DEALER_HIT, DEALER_STAY, CALCULATE } from './useCases'
-import {bJReducer} from './BJReducer'
+import BJContext from './BJContext'
+import bJReducer from './BJReducer'
+//------  Initial State & Reducer Cases  -------//
+import { initialState, 
+   START, 
+   RESTART, 
+   PLAYER_HIT, 
+   PLAYER_STAY, 
+   DEALER_HIT, 
+   DEALER_STAY, 
+   CALCULATE_PLAYER, 
+   CALCULATE_DEALER } from './useCases'
 
 
 
 const BJState = ( component_receiver ) =>{
+   
    const [state, dispatch] = useReducer( bJReducer, initialState )
 
    const startInit = (BlackJack) => {
@@ -50,21 +60,30 @@ const BJState = ( component_receiver ) =>{
       })
    }
 
-   
-   const gameCalculation = (BlackJack) =>{
+   const calculatePlayer= (BlackJack) =>{
       dispatch({
-         type: CALCULATE,
+         type: CALCULATE_PLAYER,
+         payload: BlackJack,
+      })
+   }
+
+   const calculateDealer = (BlackJack) =>{
+      dispatch({
+         type: CALCULATE_DEALER,
          payload: BlackJack,
       })
    }
 
    const updateBJ = useMemo(() => ({
+      bJ: state.bJ,
       start: startInit,
       restart: restartInit,
       playerHit: playerHit,
       playerStay: playerStay,
+      playerHand: calculatePlayer,
       dealerHit: dealerHit,
       dealerStay: dealerStay,
+      dealerHand: calculateDealer,
    }), [{ bJ: state.bJ }])
 
    return(
@@ -72,5 +91,6 @@ const BJState = ( component_receiver ) =>{
          { component_receiver.children }
       </BJContext.Provider>
    )
-
 }
+
+export default BJState

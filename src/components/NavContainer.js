@@ -1,22 +1,27 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import GameContainer from './GameContainer';
+import HiLoContainer from './HiLoContainer/HiLoContainer';
 
 function NavContainer() {
 	return (
 		<div>
 			<nav>
 				<Link to='/'>
-					<h3><button></button></h3>
+					<button>HOME</button>
 				</Link>
-				<Link to='/hi-lo-visualizer/' element='GameContainer'>
-					<h3><button>Hi-Lo Visualizer</button></h3>
+				<Link to='/game-container' element='./GameContainer'>
+					<button>Game Container [Pre-Factor]</button>
+				</Link>
+				<Link to='/hilo-container' element='./HiLoContainer/HiLoContainer'>
+					<button>HiLo Container [Re-Factor]</button>
 				</Link>
 			</nav>
 			<main>
 				<Routes path='/'>
 					<Route path='/' element={<Home />} />
-					<Route path='/:BlackJack' element={<GameContainer />} />
+					<Route path='/game-container' element={<GameContainer/>} />
+					<Route path='hilo-container' element={<HiLoContainer/>} />
 				</Routes>
 			</main>
 		</div>
