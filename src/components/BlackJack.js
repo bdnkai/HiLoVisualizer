@@ -81,7 +81,6 @@ function BlackJack() {
 				{bJ.playerHit == true ? <PlayerHit /> : null}
 			</div>
 			<div>{<HiLoCounter />}</div>
-			<Spline scene='https://prod.spline.design/IDA7NSXVaPnjctJc/scene.splinecode' />
 		</div>
 	);
 }
