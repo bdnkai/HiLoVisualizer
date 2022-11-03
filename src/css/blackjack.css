@@ -1,10 +1,53 @@
-html,
-body,
-#root {
+html
+{
+    display: grid;
+    justify-content: center;
     height: 100%;
+    width: 100%;
+	grid-template-rows: repeat(99, 1fr);
+	grid-template-columns: repeat(99, 1fr);
 }
 
 body{
-    margin: 0;
-    background-color: rgb(181, 171, 147);
+    justify-content: center;
+	grid-row: 5 /span 95;
+	grid-column: 1 /span 95;
+	font-size: 16px;
+	position: relative;
+	background-color: rgba(7, 7, 7, 0.85);
+	color: rgb(255, 255, 255);
+}
+
+.DealerValues{
+    display: flex;
+    grid-row: 10 span/ 50;
+	grid-column: 5 span/ 80;
+ 
+}
+
+.PlayerValues{
+    display: flex;
+    grid-row: 10 /span 80;
+	grid-column: 1 /span 80;
+ 
+}
+.PlayerCards{
+    display: inline;
+    width: 100%;
+}
+#CardImageDealer{
+    max-height: 115px;
+    max-width: 85px;
+    min-height: 115px;
+    min-width: 85px;
+    
+
+}
+#CardImagePlayer{
+    max-height: 115px;
+    max-width: 85px;
+    min-height: 115px;
+    min-width: 85px;
+    grid-row:  80;
+	grid-column: 1 /span 80;
 }

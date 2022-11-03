@@ -6,7 +6,6 @@ import NewSet from './logic-components/start-components/NewSet';
 import DealerHit from './logic-components/hit-components/DealerHit';
 import PlayerHit from './logic-components/hit-components/PlayerHit';
 import HiLoCounter from './logic-components/HiLoCounter';
-import Spline from '@splinetool/react-spline';
 
 function BlackJack() {
 	const { bJ, setBJ } = useContext(gameContext);

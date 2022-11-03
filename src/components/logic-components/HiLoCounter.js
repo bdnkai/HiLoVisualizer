@@ -52,34 +52,31 @@ function HiLoCounter() {
 
 	return (
 		<body>
-			<div className='HiLo'>
-				<div className='PlayerValues'>
-					<p>HI-LO: {playerCount}</p>
-					<div>
-						{bJ.playerA &&
-							bJ.playerA.map((pCard, index) => {
-								return (
-									<div className='PlayerCards'>
-										<ul>
-											<li key={pCard.code}></li>
-											<img src={pCard.image} alt='' id='CardImagePlayer' />
-										</ul>
-									</div>
-								);
-							})}
-					</div>
-				</div>
-				<div className='DealerValues'>
-					<h3>Dealer</h3>
-					<p>Hi-Lo Value: {dealerCount}</p>
+			<div className='DealerValues'>
+				<div>Dealer</div>
 					{bJ.dealer &&
 						bJ.dealer.map((dCard, index) => {
 							return (
 								<div className='DealerCards'>
-									<ul>
-										<li key={dCard.code}></li>
+									<div>
+										<div key={dCard.code}></div>
 										<img src={dCard.image} alt='' id='CardImageDealer' />
-									</ul>
+									</div>
+								</div>
+							);
+						})}
+				</div>
+			<div className='PlayerValues'>
+				<div>
+					<div>Player</div>
+					{bJ.playerA &&
+						bJ.playerA.map((pCard, index) => {
+							return (
+								<div className='PlayerCards'>
+									<div>
+										<div key={pCard.code}></div>
+										<img src={pCard.image} alt='' id='CardImagePlayer' />
+									</div>
 								</div>
 							);
 						})}

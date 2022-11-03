@@ -10,18 +10,14 @@ function NavContainer() {
 				<Link to='/'>
 					<button>HOME</button>
 				</Link>
-				<Link to='/game-container' element='./GameContainer'>
-					<button>Game Container [Pre-Factor]</button>
-				</Link>
-				<Link to='/hilo-container' element='./HiLoContainer/HiLoContainer'>
-					<button>HiLo Container [Re-Factor]</button>
+				<Link to='/blackjack' element='./GameContainer'>
+					<button>Black Jack</button>
 				</Link>
 			</nav>
 			<main>
 				<Routes path='/'>
 					<Route path='/' element={<Home />} />
-					<Route path='/game-container' element={<GameContainer/>} />
-					<Route path='hilo-container' element={<HiLoContainer/>} />
+					<Route path='/blackjack' element={<GameContainer/>} />
 				</Routes>
 			</main>
 		</div>

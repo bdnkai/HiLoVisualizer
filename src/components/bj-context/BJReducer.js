@@ -6,6 +6,8 @@ const bJReducer = (state, action) => {
       case START:
          console.log('Start from reducer is functioning')
          return{
+            ...state,
+            start: true,
          }
          // -------  CASE: RESTART  ------- //
       case RESTART:
