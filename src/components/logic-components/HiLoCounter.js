@@ -8,6 +8,7 @@ function HiLoCounter() {
 
 	function hiLoCount() {
 		if (bJ.playerA) {
+			setPlayerCount(0);
 			bJ.playerA.filter((pCard, index) => {
 				if (pCard.value <= 6) {
 					setPlayerCount(playerCount + 1);
@@ -27,6 +28,7 @@ function HiLoCounter() {
 		}
 		if (bJ.dealer) {
 			bJ.dealer.filter((dCard, index) => {
+				setDealerCount(0);
 				if (dCard.value <= 6) {
 					setDealerCount(dealerCount + 1);
 				}
@@ -51,8 +53,7 @@ function HiLoCounter() {
 	}, [bJ]);
 
 	return (
-		<body>
-			<div className='DealerValues'>
+		<div className='CardContainer'>
 				<div>Dealer</div>
 					{bJ.dealer &&
 						bJ.dealer.map((dCard, index) => {
@@ -65,9 +66,6 @@ function HiLoCounter() {
 								</div>
 							);
 						})}
-				</div>
-			<div className='PlayerValues'>
-				<div>
 					<div>Player</div>
 					{bJ.playerA &&
 						bJ.playerA.map((pCard, index) => {
@@ -81,8 +79,6 @@ function HiLoCounter() {
 							);
 						})}
 				</div>
-			</div>
-		</body>
 	);
 }
 

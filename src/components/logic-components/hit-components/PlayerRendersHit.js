@@ -17,7 +17,7 @@ function PlayerRendersHit() {
 						playerA: res.piles.playerA.cards,
 						playerHit: false,
 					});
-				}, 300);
+				}, 50);
 			});
 	};
 

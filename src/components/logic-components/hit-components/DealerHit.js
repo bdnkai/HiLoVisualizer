@@ -18,7 +18,7 @@ function DealerHit() {
 			.then((res) => {
 				setTimeout(() => {
 					setDealerHit(res.cards);
-				}, 200);
+				}, 50);
 			});
 	};
 	const dealCard = () => {
@@ -31,14 +31,14 @@ function DealerHit() {
 			.then((res) => {
 				setTimeout(() => {
 					setDealerCode('success');
-				}, 200);
+				}, 50);
 			});
 	};
 	useEffect(() => {
 		if (isMounted) {
 			setTimeout(() => {
 				fetchCard();
-			}, 200);
+			}, 50);
 		}
 		isMounted = false;
 	}, []);

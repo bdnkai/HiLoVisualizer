@@ -18,8 +18,8 @@ function BlackJack() {
 	} = useHandle();
 
 	return (
-		<div>
-			<div className='BlackJack'>
+		<div className='BlackJack'>
+			<div className='BlackJack-inner'>
 				{/*------ START BUTTON ----- */}
 				{bJ.start == false ? (
 					<div>
@@ -38,12 +38,13 @@ function BlackJack() {
 							<h2>Dealers Turn</h2>
 						</div>
 						<div className='DealerButton'>
+							{bJ.dealerHit ? null : 
 							<button
 								className='dealerHit'
 								type='button'
 								onClick={handleDealerHit}>
 								HIT
-							</button>
+							</button>}
 							<button
 								className='dealerStay'
 								type='button'
@@ -62,12 +63,13 @@ function BlackJack() {
 							<h2>Players</h2>
 						</div>
 						<div className='PlayerButton'>
-							<button
+							{bJ.playerHit ? null : <button
 								className='playerHit'
 								type='button'
 								onClick={handlePlayerHit}>
 								HIT
-							</button>
+							</button>}
+							
 							<button
 								className='playerStay'
 								type='button'

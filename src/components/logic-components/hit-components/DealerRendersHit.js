@@ -17,7 +17,7 @@ function DealerRendersHit() {
 						dealer: res.piles.dealer.cards,
 						dealerHit: false,
 					});
-				}, 300);
+				}, 50);
 			});
 	};
 

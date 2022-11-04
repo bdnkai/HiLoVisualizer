@@ -1,45 +1,70 @@
 html
 {
-    display: grid;
+    display: flex;
     justify-content: center;
     height: 100%;
     width: 100%;
-	grid-template-rows: repeat(99, 1fr);
-	grid-template-columns: repeat(99, 1fr);
+    background-color: rgb(49, 48, 48);
 }
 
-body{
-    justify-content: center;
-	grid-row: 5 /span 95;
-	grid-column: 1 /span 95;
+
+#root{
+    display: flex;
 	font-size: 16px;
-	position: relative;
+    height: 70vh;
+    width: 80vw;
+    margin-top: 15%;
+    grid-row: 20 /span 95;
+	grid-column: 1 /span 95;
+    grid-template-rows: repeat(99, 1fr);
+	grid-template-columns: repeat(99, 1fr);
 	background-color: rgba(7, 7, 7, 0.85);
 	color: rgb(255, 255, 255);
 }
 
-.DealerValues{
-    display: flex;
-    grid-row: 10 span/ 50;
-	grid-column: 5 span/ 80;
+.GameContainer{
+
+}
+
+.BlackJack{
+    display: grid;
+    max-height: 70vh;
+    width: 80vw;
+}
+.BlackJack-inner{
+    display: grid;
+    height: 70vh;
+    width: 80vw;
+    grid-template-rows: repeat(99, 1fr);
+	grid-template-columns: repeat(99, 1fr);
+    grid-row: 1 /span 95;
+	grid-column: 1 /span 95;
+}
+.CardContainer{
+    
+}
+.DealerCards{
+    display: inline-flex;
+    height: 100px;
+    width: 500px;
+    grid-row: 20 ;
+	grid-column: 1 /span 95;
+
  
 }
 
 .PlayerValues{
-    display: flex;
-    grid-row: 10 /span 80;
-	grid-column: 1 /span 80;
+    display: inline-flex;
  
 }
-.PlayerCards{
-    display: inline;
-    width: 100%;
-}
+
 #CardImageDealer{
     max-height: 115px;
     max-width: 85px;
     min-height: 115px;
     min-width: 85px;
+    grid-row: 9 /span 94;
+	grid-column: 9 /span 94;
     
 
 }
@@ -48,6 +73,6 @@ body{
     max-width: 85px;
     min-height: 115px;
     min-width: 85px;
-    grid-row:  80;
+    grid-row:  1  /span 80;
 	grid-column: 1 /span 80;
 }

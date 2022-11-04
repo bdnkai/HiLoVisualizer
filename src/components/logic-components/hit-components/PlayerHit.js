@@ -19,7 +19,7 @@ function PlayerHit() {
 				
 				setTimeout(() => {
 					setPlayerHit(res.cards);
-				}, 300);
+				}, 50);
 			});
 	};
 	const dealCard = () => {
@@ -33,7 +33,7 @@ function PlayerHit() {
 				setTimeout(() => {
 					setPlayerCode('success');
 					
-				}, 300);
+				}, 50);
 			});
 	};
 
@@ -41,7 +41,7 @@ function PlayerHit() {
 		if (isMounted) {
 			setTimeout(() => {
 				fetchCard();
-			}, 300);
+			}, 50);
 		}
 		isMounted = false;
 	}, []);
