@@ -2,7 +2,7 @@ html
 {
     display: flex;
     justify-content: center;
-    height: 100%;
+    height: 80%;
     width: 100%;
     background-color: rgb(49, 48, 48);
 }
@@ -23,15 +23,10 @@ html
 }
 
 .GameContainer{
-
+    display: flex;
 }
 
 .BlackJack{
-    display: grid;
-    max-height: 70vh;
-    width: 80vw;
-}
-.BlackJack-inner{
     display: grid;
     height: 70vh;
     width: 80vw;
@@ -40,22 +35,37 @@ html
     grid-row: 1 /span 95;
 	grid-column: 1 /span 95;
 }
+.HiloComponents{
+    display: grid;
+    grid-template-rows: repeat(99, 1fr);
+	grid-template-columns: repeat(99, 1fr);
+    height: 100%;
+    width: 100%;
+}
 .CardContainer{
-    
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+	grid-template-columns: repeat(10, 1fr);
+    grid-row: 40;
+    grid-column: 1;
+    height: 70vh;
+    width: 70vw;
+
 }
 .DealerCards{
-    display: inline-flex;
-    height: 100px;
-    width: 500px;
-    grid-row: 20 ;
-	grid-column: 1 /span 95;
-
  
+}
+.PlayerText{
+    grid-row: 6;
+    grid-column: 3;
+}
+.PlayerCards{
+    grid-row: 7;
+    grid-column: 2;
 }
 
 .PlayerValues{
     display: inline-flex;
- 
 }
 
 #CardImageDealer{
@@ -63,8 +73,6 @@ html
     max-width: 85px;
     min-height: 115px;
     min-width: 85px;
-    grid-row: 9 /span 94;
-	grid-column: 9 /span 94;
     
 
 }
@@ -73,6 +81,4 @@ html
     max-width: 85px;
     min-height: 115px;
     min-width: 85px;
-    grid-row:  1  /span 80;
-	grid-column: 1 /span 80;
 }

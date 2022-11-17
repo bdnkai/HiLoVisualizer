@@ -19,7 +19,6 @@ function BlackJack() {
 
 	return (
 		<div className='BlackJack'>
-			<div className='BlackJack-inner'>
 				{/*------ START BUTTON ----- */}
 				{bJ.start == false ? (
 					<div>
@@ -80,8 +79,7 @@ function BlackJack() {
 					</div>
 				) : null}
 				{bJ.playerHit == true ? <PlayerHit /> : null}
-			</div>
-			<div>{<HiLoCounter />}</div>
+				<div className='HiLoComponents'>{<HiLoCounter />}</div>
 		</div>
 	);
 }

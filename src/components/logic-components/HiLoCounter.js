@@ -60,13 +60,13 @@ function HiLoCounter() {
 							return (
 								<div className='DealerCards'>
 									<div>
-										<div key={dCard.code}></div>
-										<img src={dCard.image} alt='' id='CardImageDealer' />
+										<div key={dCard.code}><img src={dCard.image} alt='' id='CardImageDealer' /></div>
+										
 									</div>
 								</div>
 							);
 						})}
-					<div>Player</div>
+					<div className='PlayerText'>Player</div>
 					{bJ.playerA &&
 						bJ.playerA.map((pCard, index) => {
 							return (
